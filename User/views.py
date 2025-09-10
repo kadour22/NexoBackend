@@ -7,7 +7,6 @@ from .serializers import RegistrationSerializer , ChangePasswordSerializer
 
 class RegistrationView(generics.CreateAPIView):
     serializer_class = RegistrationSerializer
-    permission_classes = [permissions.AllowAny]
 
 class ChangePasswordView(APIView):
     permission_classes = [permissions.IsAuthenticated]
