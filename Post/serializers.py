@@ -2,11 +2,19 @@ from rest_framework import serializers
 from .models import Post
 # from Profile.serializers import 
 from django.contrib.auth.models import User
+from Profile.models import Profile
 
+class ProfileSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = Profile
+        fields = ["profile_image"]
+        
 class AuthorSerilaizer(serializers.ModelSerializer):
+    profile = ProfileSerializer(read_only=True)
     class Meta:
         model = User
-        fields = ['id']
+        fields = ['profile']
+
 class PostListsSerializer(serializers.ModelSerializer):
     author = AuthorSerilaizer(read_only=True)
     class Meta:
