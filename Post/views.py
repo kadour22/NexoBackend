@@ -13,6 +13,6 @@ class PostListView(generics.ListAPIView):
 
 class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.select_related("author").all()
-    serializer_class = PostDetailSerializer
+    serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     lookup_field = 'id'
