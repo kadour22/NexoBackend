@@ -11,7 +11,10 @@ class Post(models.Model) :
 
     def __str__(self):
         return self.title
-        
+    
+    def count_likes(self):
+        return self.likes.count()
+
     class Meta:
         ordering = ['-created_at']
 

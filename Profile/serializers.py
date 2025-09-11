@@ -5,7 +5,6 @@ from Post.serializers import PostListSerializer
     
 class UserSerializer(serializers.ModelSerializer):
     posts = PostListSerializer(many=True, read_only=True)
-
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name','posts']
