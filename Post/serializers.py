@@ -4,6 +4,11 @@ from .models import Post
 from django.contrib.auth.models import User
 from Profile.models import Profile
 
+class ActiveUserSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = User
+        fields= ['id']
+
 class ProfileSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Profile
@@ -32,9 +37,10 @@ class UserSerializer(serializers.ModelSerializer):
 class PostListSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     likes_count = serializers.SerializerMethodField()
+    likes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     class Meta:
         model = Post
-        fields = ["title", "author", "image", "created_at", "content", "likes", "likes_count"]
+        fields = ["id","title", "author", "image", "created_at", "content", "likes", "likes_count"]
     def get_likes_count(self, obj):
         return obj.likes.count()
 
@@ -42,4 +48,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = "__all__"
-        read_only_fields = ("id", "created_at", "updated_at","author","likes")
+        read_only_fields = ("id", "created_at", "updated_at","author","likes","likes_count",)
+
+    def get_likes_count(self, obj):
+        return obj.likes.count()

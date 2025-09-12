@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'User',
     'Profile',
     'Post',
+    'Comment',
     'rest_framework',   
     'corsheaders',
 ]

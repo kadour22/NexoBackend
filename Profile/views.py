@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status , generics
 from rest_framework.permissions import IsAuthenticated
 
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer,UpdateProfileSerializer
 from .models import Profile
 
 class UserProfile(APIView):
@@ -18,7 +18,7 @@ class UserProfile(APIView):
 
 class UpdateProfileData(generics.UpdateAPIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = ProfileSerializer
+    serializer_class = UpdateProfileSerializer
 
     def get_object(self):
         return Profile.objects.get(user=self.request.user)
