@@ -8,10 +8,13 @@ class PostCreateView(generics.CreateAPIView):
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticated]
 
+    def perform_create(self,serializer) :
+        return serializer.save(author=self.request.user)
+
 class PostListView(generics.ListAPIView):
     queryset = Post.objects.select_related("author").all()
     serializer_class = PostListSerializer
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
 
 class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.select_related("author").all()
