@@ -42,8 +42,10 @@ INSTALLED_APPS = [
     'Profile',
     'Post',
     'Comment',
+    'Notification',
     'rest_framework',   
     'corsheaders',
+    'channels'
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Nexo_Backend.wsgi.application'
+ASGI_APPLICATION = 'Nexo_Backend.asgi.application'
 
 
 # Database
@@ -142,7 +145,7 @@ SIMPLE_JWT = {
     "UPDATE_LAST_LOGIN": False,
 
     "ALGORITHM": "HS256",
-    "SIGNING_KEY": settings.SECRET_KEY,
+    # "SIGNING_KEY": settings.SECRET_KEY,
     "VERIFYING_KEY": "",
     "AUDIENCE": None,
     "ISSUER": None,
@@ -182,6 +185,7 @@ REST_FRAMEWORK = {
     )
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
-]
+CORS_ALLOW_ALL_ORIGINS = True
+CHANNEL_LAYERS = {
+    "default" : {"BACKEND": "channels.layers.InMemoryChannelLayer"},
+}
