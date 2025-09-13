@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-a988xv)u8kxpz6xp$j()a9ynoc@x(h)pr!+^k5&ds*ugexd4cz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+
 
 
 # Application definition
@@ -189,3 +190,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 CHANNEL_LAYERS = {
     "default" : {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
+
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://onlynexo.netlify.app",
+]
