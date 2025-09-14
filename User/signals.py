@@ -8,6 +8,6 @@ from django.contrib.auth.models import User
 @receiver(post_save,sender=User)
 def create_user_profile_signal(sender, instance, created, **kwargs) :
     if created :
-        profile = Profile.objects.create(user=instance)
+        profile = Profile.objects.create(user=instance,first_name=instance.first_name,last_name=instance.last_name)
         profile.save()
         print("Profile Created")
