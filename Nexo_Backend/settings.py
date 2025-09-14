@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-a988xv)u8kxpz6xp$j()a9ynoc@x(h)pr!+^k5&ds*ugexd4cz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = ["nexobackend-7pil.onrender.com"]
 
 
 # Application definition
