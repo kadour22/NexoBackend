@@ -195,4 +195,5 @@ CHANNEL_LAYERS = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://onlynexo.netlify.app",
+    "https://nexobackend-7pil.onrender.com"
 ]
