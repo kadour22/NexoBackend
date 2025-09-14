@@ -10,7 +10,6 @@ from asgiref.sync import async_to_sync
 def real_time_notifications(sender, instance, created, **kwargs) :
     if created :
         users = User.objects.all()
-        # user = User.objects.get(instance.id)
         for user in users :
             notify = Notification.objects.create(
                 user = user,
