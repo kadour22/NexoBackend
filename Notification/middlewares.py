@@ -5,7 +5,7 @@ from django.contrib.auth.models import AnonymousUser
 from rest_framework_simplejwt.tokens import UntypedToken
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from django.contrib.auth import get_user_model
-from jwt import decode as jwt_decode
+from jwt import decode as jwt_decode, ExpiredSignatureError, DecodeError
 from django.conf import settings
 
 User = get_user_model()
@@ -25,11 +25,15 @@ class JWTAuthMiddleware(BaseMiddleware):
             try:
                 # Validate token
                 UntypedToken(token[0])
-                # Decode token to get user_id
+                # Decode token
                 decoded_data = jwt_decode(token[0], settings.SECRET_KEY, algorithms=["HS256"])
-                user = await get_user(decoded_data["user_id"])
+                user_id = decoded_data.get("user_id")
+                if user_id is None:
+                    raise KeyError("user_id not in token")
+                user = await get_user(user_id)
                 scope["user"] = user
-            except (InvalidToken, TokenError):
+            except (InvalidToken, TokenError, ExpiredSignatureError, DecodeError, KeyError) as e:
+                print("JWT auth failed:", e)
                 scope["user"] = AnonymousUser()
         else:
             scope["user"] = AnonymousUser()
