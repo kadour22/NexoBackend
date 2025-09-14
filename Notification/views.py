@@ -6,7 +6,7 @@ from .serializers import NotificationSerializer
 from .models import Notification
 
 class NotificationsList(APIView) :
-    permission_classes = [permission_classes.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     def get(self , request) :
         notifications = Notification.objects.all()
         notifications_count = notifications.count()
