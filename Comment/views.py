@@ -20,8 +20,10 @@ class PostComments(APIView):
             }, status=status.HTTP_200_OK
         )
 
-class CreateComment(generics.RetrieveUpdateDestroyAPIView) :
+class CreateComment(generics.CreateAPIView) :
     serializer_class = CreateCommentSerializer
     permission_classes = [permissions.IsAuthenticated]
-    lookup_field = 'id'
+
+    def perform_create(self, serializer) :
+        return serializer.save(user=self.request.user)
 
