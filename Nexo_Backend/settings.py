@@ -28,7 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "nexobackend-7pil.onrender.com",
-    "onlynexo.netlify.app"
+    "onlynexo.netlify.app",
+    "127.0.0.1:8000"
 ]
 
 
