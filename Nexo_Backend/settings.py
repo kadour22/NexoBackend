@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'Post',
     'Comment',
     'Notification',
+    'Messages',
     'rest_framework',   
     'corsheaders',
     'channels'
@@ -196,3 +197,16 @@ CSRF_TRUSTED_ORIGINS = [
     "https://onlynexo.netlify.app",
     "https://nexobackend-7pil.onrender.com"
 ]
+
+REDIS_URL = config("REDIS_URL")
+REDIS_CLIENT  = redis.Redis.from_url(REDIS_URL, decode_responses=True)
+
+# Channels Layer Configurations
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [REDIS_URL],
+        },
+    },
+}
