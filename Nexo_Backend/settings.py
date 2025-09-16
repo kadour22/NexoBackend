@@ -193,7 +193,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://nexobackend-7pil.onrender.com"
 ]
 
-REDIS_URL ="REDIS_URL=rediss://default:AURwAAIncDEzNTI5NTRiZWEwYTU0MjQxYTVlYjdkMTZkNTIxY2JmNnAxMTc1MjA@merry-zebra-17520.upstash.io:6379"
+REDIS_URL ="rediss://default:AURwAAIncDEzNTI5NTRiZWEwYTU0MjQxYTVlYjdkMTZkNTIxY2JmNnAxMTc1MjA@merry-zebra-17520.upstash.io:6379"
 REDIS_CLIENT  = redis.Redis.from_url(REDIS_URL, decode_responses=True)
 
 # Channels Layer Configurations
