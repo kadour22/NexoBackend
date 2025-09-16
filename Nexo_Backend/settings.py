@@ -13,13 +13,16 @@ import os
 from django.conf import settings
 from pathlib import Path
 from datetime import timedelta
-from decouple import config
+
 import redis
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-a988xv)u8kxpz6xp$j()a9ynoc@x(h)pr!+^k5&ds*ugexd4cz"
-ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
+ALLOWED_HOSTS = [
+    "nexobackend-7pil.onrender.com",
+    "onlynexo.netlify.app"
+] 
 
 DEBUG = True
 
@@ -190,7 +193,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://nexobackend-7pil.onrender.com"
 ]
 
-REDIS_URL = config("REDIS_URL")
+REDIS_URL ="REDIS_URL=rediss://default:AURwAAIncDEzNTI5NTRiZWEwYTU0MjQxYTVlYjdkMTZkNTIxY2JmNnAxMTc1MjA@merry-zebra-17520.upstash.io:6379"
 REDIS_CLIENT  = redis.Redis.from_url(REDIS_URL, decode_responses=True)
 
 # Channels Layer Configurations
