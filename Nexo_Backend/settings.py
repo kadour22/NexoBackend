@@ -18,7 +18,7 @@ import redis
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = "django-insecure-a988xv)u8kxpz6xp$j()a9ynoc@x(h)pr!+^k5&ds*ugexd4cz"
 ALLOWED_HOSTS = config("ALLOWED_HOSTS", default="").split(",")
 
 DEBUG = True
