@@ -9,6 +9,5 @@ class Profile(models.Model):
     null=True , default = "assets/a.jpg"
     )
     profile_cover = models.ImageField(upload_to='profile_covers/', blank=True, null=True)
-    followers = models.ManyToManyField(User)
     def __str__(self):
         return f"{self.user.username}'s profile" 
