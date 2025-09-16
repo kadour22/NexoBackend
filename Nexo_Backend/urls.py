@@ -10,4 +10,5 @@ urlpatterns = [
     path('Post/', include('Post.urls')),
     path('Comment/', include('Comment.urls')),
     path('Notifications/', include('Notification.urls')),
+    path('Messages/', include('Messages.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
