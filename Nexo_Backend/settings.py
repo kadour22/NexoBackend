@@ -184,15 +184,6 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": ["redis://red-d33c337fte5s73apiqfg:6379"],
-        },
-    },
-}
-
 CSRF_TRUSTED_ORIGINS = [
     "https://onlynexo.netlify.app",
     "https://nexobackend-7pil.onrender.com"
