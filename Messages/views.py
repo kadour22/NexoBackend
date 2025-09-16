@@ -2,12 +2,7 @@ from rest_framework import generics, permissions
 from .models import Room, Message
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import RoomSerializer, MessageSerializer,RegistrationSerializer 
-
-
-class RegistrationView(generics.CreateAPIView):
-    serializer_class = RegistrationSerializer
-
+from .serializers import RoomSerializer, MessageSerializer
 
 # List all rooms or create a new room
 class RoomListCreateView(generics.ListCreateAPIView):
