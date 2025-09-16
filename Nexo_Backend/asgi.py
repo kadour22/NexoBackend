@@ -8,13 +8,13 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Nexo_Backend.settings')
 
 django_application = get_asgi_application()
 
-import Notification.routing
+import Messages.routing
 from Notification.middlewares import JWTAuthMiddleware
 application = ProtocolTypeRouter({
     "http":get_asgi_application(),
      "websocket": AllowedHostsOriginValidator(
             JWTAuthMiddleware(
-                URLRouter(Notification.routing.websocket_urlpatterns)
+                URLRouter(Messages.routing.websocket_urlpatterns)
             )
         ),
 })
