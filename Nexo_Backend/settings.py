@@ -13,8 +13,6 @@ import os
 from django.conf import settings
 from pathlib import Path
 from datetime import timedelta
-
-import redis
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,8 +41,7 @@ INSTALLED_APPS = [
     'Notification',
     'Messages',
     'rest_framework',   
-    'corsheaders',
-    'channels'
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Nexo_Backend.wsgi.application'
-ASGI_APPLICATION = 'Nexo_Backend.asgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -194,16 +189,3 @@ CSRF_TRUSTED_ORIGINS = [
     "https://nexobackend-7pil.onrender.com"
 ]
 
-REDIS_URL ="rediss://default:AURwAAIncDEzNTI5NTRiZWEwYTU0MjQxYTVlYjdkMTZkNTIxY2JmNnAxMTc1MjA@merry-zebra-17520.upstash.io:6379"
-REDIS_CLIENT  = redis.Redis.from_url(REDIS_URL, decode_responses=True)
-
-# Channels Layer Configurations
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [REDIS_URL],  # must be a list
-            "ssl": True,           # required for rediss://
-        },
-    },
-}
