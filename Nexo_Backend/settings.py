@@ -21,7 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-a988xv)u8kxpz6xp$j()a9ynoc@x(h)pr!+^k5&ds*ugexd4cz"
 ALLOWED_HOSTS = [
     "nexobackend-7pil.onrender.com",
-    "onlynexo.netlify.app"
+    "onlynexo.netlify.app",
+    "127.0.0.1"
 ] 
 
 DEBUG = True
@@ -202,8 +203,7 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
             "hosts": REDIS_URL,
-            "ssl" : True,
-            
+            "ssl" : True, 
         },
     },
 }
