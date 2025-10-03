@@ -6,18 +6,18 @@ from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
 
 
-@receiver(post_save, sender=User)
-def real_time_notifications(sender, instance, created, **kwargs) :
-    if created :
-        notify = Notification.objects.create(
-                message = f"{instance.username} Join Nexo Community"
-            )
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-                "notifications",
-                {
-                    "type":"send_notification" , 
-                    "message": notify.message
-                }
-            )
+# @receiver(post_save, sender=User)
+# def real_time_notifications(sender, instance, created, **kwargs) :
+#     if created :
+#         notify = Notification.objects.create(
+#                 message = f"{instance.username} Join Nexo Community"
+#             )
+#         channel_layer = get_channel_layer()
+#         async_to_sync(channel_layer.group_send)(
+#                 "notifications",
+#                 {
+#                     "type":"send_notification" , 
+#                     "message": notify.message
+#                 }
+#             )
             
