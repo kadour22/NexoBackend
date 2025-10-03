@@ -20,3 +20,9 @@ class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
         fields = ['id', 'name', 'messages']
+
+class SendRoomMessageSerializer(serializers.ModelSerializer) :
+    class Meta :
+        model = Message
+        fields = ["room","user" , "content" , "timestamp"]
+        read_only_fields = ["user"]
