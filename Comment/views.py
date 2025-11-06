@@ -21,10 +21,9 @@ class PostComments(APIView):
             }, status=status.HTTP_200_OK
         )
 
-class CreateComment(APIView) :
-    def post(self, request, post_id) :
-        serializer = CreateCommentSerializer(data=request.data)
-        if serializer.is_valid() :
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors , status=status.HTTP_400_BAD_REQUEST)
+class CreateComment(generics.CreateAPIView) :
+    serializer_class = CreateCommentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        return serializer.save(user=self.request.user)
