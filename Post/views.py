@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import generics, permissions, status
-from .serializers import PostSerializer, PostListSerializer , ActiveUserSerializer
+from .serializers import PostSerializer, PostListSerializer , ActiveUserSerializer, PostDetailSerializer
 from .models import Post
 
 class PostCreateView(generics.CreateAPIView):
@@ -16,9 +16,9 @@ class PostListView(generics.ListAPIView):
     serializer_class = PostListSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class PostRetrieveUpdateDestroyView(generics.RetrieveAPIView):
     queryset = Post.objects.select_related("author").all()
-    serializer_class = PostSerializer
+    serializer_class = PostDetailSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     lookup_field = 'id'
 
