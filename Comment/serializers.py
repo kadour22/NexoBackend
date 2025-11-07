@@ -5,8 +5,8 @@ from .models import Comment
 class CreateCommentSerializer(serializers.ModelSerializer) :
     class Meta :
         model = Comment
-        fields= ["post","content","user"]
-        read_only_fields = ["user"]
+        fields= ["id","post","content","user"]
+        read_only_fields = ["user","id"]
 
 
 class ListCommentSerializer(serializers.ModelSerializer) :
