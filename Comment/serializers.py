@@ -12,7 +12,6 @@ class CreateCommentSerializer(serializers.ModelSerializer) :
 class ListCommentSerializer(serializers.ModelSerializer) :
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
-    # comments = ser
     class Meta :
         model = Comment
         fields= ["user","content","created_at","last_name","first_name","comments"]
